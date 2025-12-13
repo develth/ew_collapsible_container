@@ -2,19 +2,25 @@
       xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
+{columnHeaderLevel -> f:or(alternative: 2) -> f:variable(name: 'columnHeaderLevel')}
+
 <div class="t3-page-column-header">
     <f:if condition="{column.active}">
         <f:then>
             <div class="t3-page-column-header-icons">
                 <f:render section="collapsibleToggleIcon" arguments="{_all}"/>
                 <f:if condition="{allowEditContent} && {column.editUrl}">
-                    <a href="{column.editUrl}" title="{f:translate(key: 'LLL:EXT:backend/Resources/Private/Language/locallang_layout.xlf:editColumn')}"
-                       class="btn btn-sm btn-default btn-borderless">
+                    <a
+                        class="btn btn-link"
+                        href="{column.editUrl}"
+                        title="{f:translate(key: 'LLL:EXT:backend/Resources/Private/Language/locallang_layout.xlf:editColumn')}"
+                    >
                         <core:icon identifier="actions-document-open" />
+                        <span class="visually-hidden">{f:translate(key: 'LLL:EXT:backend/Resources/Private/Language/locallang_layout.xlf:editColumn')}</span>
                     </a>
                 </f:if>
             </div>
-            <span id="{columnIdentifier}">{column.title}</span>
+            <h{columnHeaderLevel} id="{columnIdentifier}" class="t3-page-column-title">{column.title}</h{columnHeaderLevel}>
             <f:render section="collapsibleMinitemWarning" arguments="{_all}"/>
         </f:then>
         <f:else if="{column.unused}">
@@ -29,9 +35,19 @@
     </f:if>
 </div>
 <f:format.raw>{column.beforeSectionMarkup}</f:format.raw>
-<f:if condition="{allowEditContent} && {column.contentEditable} && {column.context.allowNewContent} && {column.active}">
-    <div class="t3-page-ce t3js-page-ce" data-page="{column.context.pageId}" id="{column.uniqueId}">
-        <f:render partial="PageLayout/ActionControls" arguments="{column: column, allowEditContent: allowEditContent, url: column.newContentUrl}" />
+<f:if condition="{allowEditContent} && {column.contentEditable} && {column.allowNewContent} && {column.active}">
+    <div class="t3-page-ce t3js-page-ce" data-page="{column.context.pageId}">
+        <f:if condition="{column.newContentElementWizardShouldBeSkipped}">
+            <f:then>
+                <a href="{column.newContentUrl}" title="{f:translate(key: 'LLL:EXT:backend/Resources/Private/Language/locallang_layout.xlf:newContentElement')}" class="btn btn-default btn-sm">
+                    <core:icon identifier="actions-plus" />
+                    <f:translate key="LLL:EXT:backend/Resources/Private/Language/locallang_layout.xlf:createNewContent" />
+                </a>
+            </f:then>
+            <f:else>
+                <f:render partial="PageLayout/ActionControls" arguments="{url: column.newContentUrl}" />
+            </f:else>
+        </f:if>
         <div class="t3-page-ce-dropzone t3js-page-ce-dropzone-available" hidden></div>
     </div>
 </f:if>
@@ -41,15 +57,15 @@
 <f:section name="collapsibleToggleIcon">
     <a href="#"
        class="btn btn-sm btn-default btn-borderless t3js-toggle-container-column"
-       title="{f:translate(key: 'LLL:EXT:ew_collapsible_container/Resources/Private/Language/locallang.xlf:expandcontent')}"
-       data-toggle-title="{f:translate(key: 'LLL:EXT:ew_collapsible_container/Resources/Private/Language/locallang.xlf:collapsecontent')}"
+       title="{f:translate(id: 'LLL:EXT:ew_collapsible_container/Resources/Private/Language/locallang.xlf:expandcontent')}"
+       data-toggle-title="{f:translate(id: 'LLL:EXT:ew_collapsible_container/Resources/Private/Language/locallang.xlf:collapsecontent')}"
        data-collapse-state="collapsed">
         <core:icon identifier="actions-view-list-expand" />
     </a>
     <a href="#"
        class="btn btn-sm btn-default btn-borderless t3js-toggle-container-column"
-       title="{f:translate(key: 'LLL:EXT:ew_collapsible_container/Resources/Private/Language/locallang.xlf:collapsecontent')}"
-       data-toggle-title="{f:translate(key: 'LLL:EXT:ew_collapsible_container/Resources/Private/Language/locallang.xlf:expandcontent')}"
+       title="{f:translate(id: 'LLL:EXT:ew_collapsible_container/Resources/Private/Language/locallang.xlf:collapsecontent')}"
+       data-toggle-title="{f:translate(id: 'LLL:EXT:ew_collapsible_container/Resources/Private/Language/locallang.xlf:expandcontent')}"
        data-collapse-state="expanded">
         <core:icon identifier="actions-view-list-collapse" />
     </a>
@@ -75,7 +91,7 @@
         <button type="button" class="btn btn-default btn-sm me-2">
             <core:icon identifier="actions-view-list-expand"/>
         </button>
-        {f:translate(key: 'LLL:EXT:ew_collapsible_container/Resources/Private/Language/locallang.xlf:contentcollapsed')}
+        <f:translate id="LLL:EXT:ew_collapsible_container/Resources/Private/Language/locallang.xlf:contentcollapsed"/>
     </div>
 </f:section>
 
