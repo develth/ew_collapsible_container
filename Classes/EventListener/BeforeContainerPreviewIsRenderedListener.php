@@ -17,7 +17,8 @@ namespace Evoweb\EwCollapsibleContainer\EventListener;
 
 use B13\Container\Backend\Grid\ContainerGridColumn as BaseContainerGridColum;
 use B13\Container\Backend\Grid\ContainerGridColumnItem;
-use B13\Container\Events\BeforeContainerPreviewIsRenderedEvent;
+use B13\Container\Events\BeforeContainerPreviewIsRenderedEvent as BeforeContainerPreviewIsRenderedEventBefore14;
+use Evoweb\EwCollapsibleContainer\Xclass\BeforeContainerPreviewIsRenderedEvent;
 use Evoweb\EwCollapsibleContainer\Xclass\ContainerGridColumn;
 use TYPO3\CMS\Core\Attribute\AsEventListener;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
@@ -28,6 +29,24 @@ class BeforeContainerPreviewIsRenderedListener
 {
     public function __construct(protected PageRenderer $pageRenderer)
     {
+    }
+
+    #[AsEventListener('collapsible-container-beforepreview', BeforeContainerPreviewIsRenderedEventBefore14::class)]
+    public function __invokeBefore14(BeforeContainerPreviewIsRenderedEventBefore14 $event): void
+    {
+        $record = $event->getContainer()->getContainerRecord();
+
+        /** @var ContainerGridColumn $column */
+        foreach ($event->getGrid()->getColumns() as $column) {
+            $countOfHiddenItems = $this->getCountOfHiddenItems($column);
+            $column->setOverride([
+                'countOfHiddenItems' => $countOfHiddenItems,
+                'collapsed' => $this->getColumnCollapsed((int)$record['uid'], $column),
+                'showMinItemsWarning' => $this->getShowMinItemsWarning($column, $countOfHiddenItems)
+            ]);
+        }
+
+        $this->addFrontendResources();
     }
 
     #[AsEventListener('collapsible-container-beforepreview', BeforeContainerPreviewIsRenderedEvent::class)]
@@ -53,7 +72,13 @@ class BeforeContainerPreviewIsRenderedListener
         return count(
             array_filter(
                 $columnObject->getItems(),
-                fn (ContainerGridColumnItem $item) => ($item->getRecord()['hidden'] ?? 0) > 0
+                function (ContainerGridColumnItem $item) {
+                    $record = $item->getRecord();
+                    $hidden = is_array($record) ?
+                        ($record['hidden'] ?? 0) :
+                        ($record->getRawRecord()->has('hidden') ? $record->getRawRecord()->get('hidden') : 0);
+                    return $hidden > 0;
+                }
             )
         );
     }

@@ -19,10 +19,10 @@ use B13\Container\Backend\Grid\ContainerGridColumn;
 use B13\Container\Backend\Grid\ContainerGridColumnItem;
 use B13\Container\Domain\Factory\Database;
 use B13\Container\Domain\Model\Container;
-use B13\Container\Events\BeforeContainerPreviewIsRenderedEvent;
 use B13\Container\Tca\ContainerConfiguration;
 use B13\Container\Tca\Registry;
 use Evoweb\EwCollapsibleContainer\EventListener\BeforeContainerPreviewIsRenderedListener;
+use Evoweb\EwCollapsibleContainer\Xclass\BeforeContainerPreviewIsRenderedEvent;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use Psr\Http\Message\ServerRequestInterface;
@@ -125,7 +125,7 @@ class BeforeContainerPreviewIsRenderedListenerTest extends FunctionalTestCase
 
     protected function getBeforeContainerPreviewIsRenderedEvent(
         RecordInterface $record
-    ): ?BeforeContainerPreviewIsRenderedEvent {
+    ): BeforeContainerPreviewIsRenderedEvent {
         $request = $this->getReuqest();
         if (class_exists(PageContext::class)) {
             $pageContext = $this->getPageContext($request);
@@ -215,7 +215,7 @@ class BeforeContainerPreviewIsRenderedListenerTest extends FunctionalTestCase
             $viewFactoryData = new ViewFactoryData();
             $viewFactory = $this->get(FluidViewFactory::class);
             $view = $viewFactory->create($viewFactoryData);
-            return null;
+            return new BeforeContainerPreviewIsRenderedEvent($container, $view, $grid, $item);
         }
     }
 
@@ -224,9 +224,6 @@ class BeforeContainerPreviewIsRenderedListenerTest extends FunctionalTestCase
     {
         $containerRecord = $this->getContentRecords('tx_container_parent', 0);
         $event = $this->getBeforeContainerPreviewIsRenderedEvent($containerRecord);
-        if ($event === null) {
-            $this->markTestSkipped('StandaloneView is not available');
-        }
 
         $subject = new BeforeContainerPreviewIsRenderedListener($this->get(PageRenderer::class));
         $subject->__invoke($event);
@@ -305,10 +302,16 @@ class BeforeContainerPreviewIsRenderedListenerTest extends FunctionalTestCase
         $reflectedClass = new \ReflectionClass($pageRenderer);
         $property = $reflectedClass->getProperty('cssFiles');
 
-        $this->assertArrayHasKey(
-            'EXT:ew_collapsible_container/Resources/Public/Css/container.css',
-            $property->getValue($pageRenderer)
+        $arrayValuesHasSubstring = 0 < count(
+            array_filter(
+                $property->getValue($pageRenderer),
+                function ($value) {
+                    return str_contains($value['file'], 'Resources/Public/Css/container.css');
+                }
+            )
         );
+
+        $this->assertTrue($arrayValuesHasSubstring);
 
         $moduleName = '@evoweb/ew-collapsible-container/container.js';
         $javascriptInstruction = array_map(
