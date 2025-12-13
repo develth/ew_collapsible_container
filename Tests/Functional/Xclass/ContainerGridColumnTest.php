@@ -13,14 +13,22 @@ declare(strict_types=1);
  * LICENSE.txt file that was distributed with this source code.
  */
 
-namespace Evoweb\EwCollapsibleContainer\Tests\Functional\EventListener;
+namespace Evoweb\EwCollapsibleContainer\Tests\Functional\Xclass;
 
 use B13\Container\Domain\Model\Container;
 use Evoweb\EwCollapsibleContainer\Xclass\ContainerGridColumn;
 use PHPUnit\Framework\Attributes\Test;
+use Psr\Http\Message\ServerRequestInterface;
+use TYPO3\CMS\Backend\Context\PageContext;
+use TYPO3\CMS\Backend\Context\PageContextFactory;
+use TYPO3\CMS\Backend\Module\ModuleData;
 use TYPO3\CMS\Backend\View\BackendLayout\BackendLayout;
 use TYPO3\CMS\Backend\View\Drawing\DrawingConfiguration;
 use TYPO3\CMS\Backend\View\PageLayoutContext;
+use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
+use TYPO3\CMS\Core\Core\SystemEnvironmentBuilder;
+use TYPO3\CMS\Core\Http\NormalizedParams;
+use TYPO3\CMS\Core\Http\ServerRequest;
 use TYPO3\CMS\Core\Http\ServerRequestFactory;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Site\Entity\Site;
@@ -28,20 +36,33 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 class ContainerGridColumnTest extends FunctionalTestCase
 {
+    private BackendUserAuthentication $backendUser;
+
     #[Test]
     public function overrideIsPartOfDefinition(): void
     {
         $this->importCSVDataSet(__DIR__ . '/../../Fixtures/be_users.csv');
-        $backendUser = $this->setUpBackendUser(1);
-        $GLOBALS['LANG'] = $this->get(LanguageServiceFactory::class)->createFromUserPreferences($backendUser);
+        $this->backendUser = $this->setUpBackendUser(1);
+        $GLOBALS['LANG'] = $this->get(LanguageServiceFactory::class)->createFromUserPreferences($this->backendUser);
 
-        $pageLayoutContext = new PageLayoutContext(
-            [],
-            new BackendLayout('', '', []),
-            new Site('test', 1, []),
-            new DrawingConfiguration(),
-            $this->get(ServerRequestFactory::class)->createServerRequest('GET', '/'),
-        );
+        $request = $this->getReuqest();
+        if (class_exists(PageContext::class)) {
+            $pageContext = $this->getPageContext($request);
+            $pageLayoutContext = new PageLayoutContext(
+                $pageContext,
+                new BackendLayout('', '', []),
+                new DrawingConfiguration(),
+                $request,
+            );
+        } else {
+            $pageLayoutContext = new PageLayoutContext(
+                [],
+                new BackendLayout('', '', []),
+                new Site('test', 1, []),
+                new DrawingConfiguration(),
+                $request
+            );
+        }
 
         $container = new Container([], [], 0);
 
@@ -62,5 +83,36 @@ class ContainerGridColumnTest extends FunctionalTestCase
         ]);
 
         $this->assertArrayHasKey('countOfHiddenItems', $subject->getDefinition());
+    }
+
+    private function getPageContext(ServerRequestInterface $request): PageContext
+    {
+        $pageContextFactory = $this->get(PageContextFactory::class);
+        return $pageContextFactory->createFromRequest(
+            $request,
+            1,
+            $this->backendUser
+        );
+    }
+
+    private function getReuqest(): ServerRequestInterface
+    {
+        $site = new Site('test-site', 1, [
+            'base' => 'https://example.com/',
+            'languages' => [
+                ['languageId' => 0, 'locale' => 'en-US', 'base' => '/', 'title' => 'English'],
+                ['languageId' => 1, 'locale' => 'de-DE', 'base' => '/de', 'title' => 'German'],
+                ['languageId' => 2, 'locale' => 'fr-FR', 'base' => '/fr', 'title' => 'French'],
+            ],
+        ]);
+
+        $moduleData = new ModuleData('web_layout', []);
+        $moduleData->set('languages', [0]);
+
+        return (new ServerRequest('https://example.com/'))
+            ->withAttribute('applicationType', SystemEnvironmentBuilder::REQUESTTYPE_BE)
+            ->withAttribute('site', $site)
+            ->withAttribute('moduleData', $moduleData)
+            ->withAttribute('normalizedParams', NormalizedParams::createFromRequest(new ServerRequest()));
     }
 }
