@@ -53,7 +53,7 @@ class ContainerToggle {
     });
   }
 
-  toggleClicked(event) {
+  async toggleClicked(event) {
     event.preventDefault();
 
     const column = event.currentTarget,
@@ -63,16 +63,15 @@ class ContainerToggle {
       storedModuleDataList = this.getCurrentModuleDataList(colPos, isExpanded);
 
     // Store collapse state in UC
-    this.setStoredModuleDataList(storedModuleDataList).then(() => {
-      if (isExpanded) {
-        containerCell.classList.add('collapsed');
-      } else {
-        containerCell.classList.remove('collapsed');
-      }
-    });
+    await this.setStoredModuleDataList(storedModuleDataList);
+    if (isExpanded) {
+      containerCell.classList.add('collapsed');
+    } else {
+      containerCell.classList.remove('collapsed');
+    }
   }
 
-  expandClicked(event) {
+  async expandClicked(event) {
     event.preventDefault();
 
     const expander = event.currentTarget,
@@ -82,9 +81,8 @@ class ContainerToggle {
       storedModuleDataList = this.getCurrentModuleDataList(colPos, isExpanded);
 
     // Store collapse state in UC
-    this.setStoredModuleDataList(storedModuleDataList).then(() => {
-      containerCell.classList.remove('collapsed');
-    });
+    await this.setStoredModuleDataList(storedModuleDataList);
+    containerCell.classList.remove('collapsed');
   }
 
   getColPos(column) {
