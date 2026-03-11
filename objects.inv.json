@@ -1,54 +1,78 @@
 {
     "std:doc": {
+        "Example\/Index": [
+            "Collapsible container",
+            "2.3.0",
+            "Example\/Index.html",
+            "Example"
+        ],
         "Index": [
-            "-",
-            "-",
+            "Collapsible container",
+            "2.3.0",
             "Index.html",
-            "ew_collapsible_container: Container with collapsible columns"
+            "Container with collapsible columns"
         ],
         "Installation\/Index": [
-            "-",
-            "-",
+            "Collapsible container",
+            "2.3.0",
             "Installation\/Index.html",
             "Installation"
         ],
         "Sitemap": [
-            "-",
-            "-",
+            "Collapsible container",
+            "2.3.0",
             "Sitemap.html",
             "Sitemap"
         ]
     },
     "std:label": {
+        "example": [
+            "Collapsible container",
+            "2.3.0",
+            "Example\/Index.html#example",
+            "Example"
+        ],
+        "start": [
+            "Collapsible container",
+            "2.3.0",
+            "Index.html#start",
+            "Container with collapsible columns"
+        ],
         "installation": [
-            "-",
-            "-",
+            "Collapsible container",
+            "2.3.0",
             "Installation\/Index.html#installation",
             "Installation"
         ]
     },
     "std:title": {
-        "ew-collapsible-container-container-with-collapsible-columns": [
-            "-",
-            "-",
-            "Index.html#ew-collapsible-container-container-with-collapsible-columns",
-            "ew_collapsible_container: Container with collapsible columns"
+        "example-1": [
+            "Collapsible container",
+            "2.3.0",
+            "Example\/Index.html#example",
+            "Example"
+        ],
+        "container-with-collapsible-columns": [
+            "Collapsible container",
+            "2.3.0",
+            "Index.html#start",
+            "Container with collapsible columns"
         ],
         "installation-1": [
-            "-",
-            "-",
-            "Installation\/Index.html#installation-1",
+            "Collapsible container",
+            "2.3.0",
+            "Installation\/Index.html#installation",
             "Installation"
         ],
-        "download-via-composer": [
-            "-",
-            "-",
-            "Installation\/Index.html#download-via-composer",
-            "Download via Composer"
+        "installation-via-composer": [
+            "Collapsible container",
+            "2.3.0",
+            "Installation\/Index.html#installation-via-composer",
+            "Installation via Composer"
         ],
         "sitemap": [
-            "-",
-            "-",
+            "Collapsible container",
+            "2.3.0",
             "Sitemap.html#sitemap",
             "Sitemap"
         ]

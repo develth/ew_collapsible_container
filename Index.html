@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
-    <title>ew_collapsible_container: Container with collapsible columns documentation</title>
+    <title>Container with collapsible columns — Collapsible container 2.3.0
+        documentation</title>
 
     
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="phpdocumentor/guides" name="generator">
-<meta content="" name="docsearch:name">
+<meta content="Collapsible container" name="docsearch:name">
 <meta content="" name="docsearch:package_type">
-<meta content="" name="docsearch:release">
-<meta content="" name="docsearch:version">
-<meta content="2024-08-14T18:58:41+00:00" name="docsearch:modified">
-<meta content="2024-08-14T18:58:41+00:00" name="dc.modified">
-<meta content="2024-08-14T18:58:41+00:00" property="article:modified_time">
+<meta content="2.3.0" name="docsearch:release">
+<meta content="2.3.0" name="docsearch:version">
+<meta content="2026-03-11T11:43:53+00:00" name="docsearch:modified">
+<meta content="2026-03-11T11:43:53+00:00" name="dc.modified">
+<meta content="2026-03-11T11:43:53+00:00" property="article:modified_time">
     <link href="http://purl.org/dc/elements/1.1/" rel="schema.dc">
 <link href="_resources/css/theme.css" rel="stylesheet">
 <link href="https://docs.typo3.org/search/" rel="search" title="Search">
-<script src="https://typo3.azureedge.net/typo3infrastructure/universe/dist/webcomponents-loader.js"></script>
-<script src="https://typo3.azureedge.net/typo3infrastructure/universe/dist/typo3-universe.js" type="module"></script>
+<script src="https://cdn.typo3.com/typo3infrastructure/universe/dist/webcomponents-loader.js"></script>
+<script src="https://cdn.typo3.com/typo3infrastructure/universe/dist/typo3-universe.js" type="module"></script>
                         <link href="Installation/Index.html" rel="next" title="Installation"/>
-            <link href="#" rel="top" title="ew_collapsible_container: Container with collapsible columns"/>
+            <link href="#" rel="top" title="Container with collapsible columns"/>
     </head>
 <body>
 <div class="page">
-    
-<header>
+    <header>
     <div class="page-topbar">
         <div class="page-topbar-inner">
             <typo3-universe active="documentation">
@@ -35,25 +35,84 @@
     </div>
     <div class="page-header">
         <div class="page-header-inner">
-            <div class="row">
-                <div class="col-sm-3 col-md-4 col-lg-6">
+            <div class="d-flex flex-wrap">
+                <div class="logo-wrapper">
                     <a class="logo" href="https://docs.typo3.org/" title="TYPO3 Documentation">
                         <img alt="TYPO3 Logo" class="logo-image" src="_resources/img/typo3-logo.svg" width="484" height="130">
                     </a>
                 </div>
-                <div class="col-sm-9 col-md-8 col-lg-6">
-                    <search role="search">
-                        <form action="https://docs.typo3.org/search/search" id="global-search-form" method="get">
-			                <div class="sr-only"><label for="globalsearchinput">TYPO3 documentation...</label></div>
-                            <div class="input-group mb-3 mt-sm-3">
-                                <select class="form-select search__scope" id="searchscope" name="scope">
-                                    <option value="">Search all</option>
-                                </select>
-                                <input autocomplete="off" class="form-control shadow-none" id="globalsearchinput" name="q" placeholder="TYPO3 documentation..." type="text" value="">
-                                <button class="btn btn-light search__submit" type="submit"><i class="fa fa-search"></i>&nbsp;<span class="d-none d-md-inline">Search</span></button>
-                            </div>
-                        </form>
-                    </search>
+                <div class="align-self-center order-lg-2 order-last">
+                    
+<div class="toc-header">
+    <div class="toc-title pe-3">
+                            <a class="toc-title-project" href="#">Container with collapsible columns</a>
+            </div>
+    <label for="languageSelect" class="visually-hidden">Select language</label>
+        <select id="languageSelect" class="form-select d-none">
+        </select>
+
+                                  
+        <label for="versionSelect" class="visually-hidden">Select version</label>
+        <select id="versionSelect" class="form-select"
+                data-current-version="2.3.0"
+            data-override-url-proxy="_resources/js/versions-proxy.php?url=" data-override-url-self="https://docs.typo3.org/m/typo3/tutorial-getting-started/12.4/en-us/Concepts/Index.html"
+        >
+            <option disabled selected>Loading versions...</option>
+        </select>
+    </div>                </div>
+                <div class="ms-auto order-lg-3 d-flex">
+                    <div class="menu-search-wrapper">
+                        <button id="toc-toggle" class="btn btn-light d-block d-lg-none" tabindex="0" aria-controls="toc-collapse" aria-expanded="false">
+                            <i class="fas fa-bars"></i> <span class="visually-hidden">Mobile Menu</span>
+                        </button>
+                        <all-documentations-menu data-override-url="_resources/js/menu-proxy.php"></all-documentations-menu>
+                                                <search role="search">
+                            <form action="https://docs.typo3.org/search/search" id="global-search-form" method="get">
+                                <div class="sr-only"><label for="globalsearchinput">TYPO3 documentation...</label></div>
+                                <div class="input-group mb-3 mt-sm-3">
+                                    <select class="form-select search__scope" id="searchscope" name="scope">
+                                        <option value="">Search all</option>
+                                    </select>
+                                    <input autocomplete="off" class="form-control shadow-none" id="globalsearchinput" name="q" placeholder="TYPO3 documentation..." type="text" value="">
+                                    <button class="btn btn-light" type="submit"><i class="fa fa-search"></i>&nbsp;<span class="d-none d-md-inline">Search</span></button>
+                                </div>
+                            </form>
+                            <div id="global-search-root"></div>
+                        </search>
+                        <div class="position-relative d-inline-block">
+                            <button id="options-toggle" class="btn btn-light d-block" type="button" aria-expanded="false">
+                                <i class="fas fa-cog"></i> <span class="visually-hidden">Options</span>
+                            </button>
+
+                            <div id="options-panel"
+                                 class="shadow p-3"
+                                 role="menu"
+                                 aria-hidden="true">
+                                <h6 class="dropdown-header text-muted text-uppercase small mb-2">Options</h6>
+
+                                                                                                            <a class="dropdown-item d-flex align-items-center gap-2" href="https://github.com/evoweb/ew_collapsible_container/issues/new/choose?title=Problem+on+https%3A%2F%2Fgithub.com%2Fevoweb%2Few_collapsible_container%2FIndex.html" id="btnReportIssue" rel="nofollow noopener" target="_blank">
+        <i class="fas fa-comment-dots"></i>
+        Give feedback
+    </a>
+    <a class="dropdown-item d-flex align-items-center gap-2" href="_sources/Index.rst.txt" rel="nofollow noopener" target="_blank">
+        <i class="fas fa-code"></i>
+        View source
+    </a>
+    <a class="dropdown-item d-flex align-items-center gap-2" href="https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/WritingDocsOfficial/GithubMethod.html" id="btnHowToEdit" rel="nofollow noopener" target="_blank">
+        <i class="fas fa-info-circle"></i>
+        How to edit
+    </a>
+    <a class="dropdown-item d-flex align-items-center gap-2" href="https://github.com/evoWeb/ew_collapsible_container/edit/develop/Documentation/Index.rst" id="btnEditOnGitHub" rel="nofollow noopener" target="_blank">
+        <i class="fab fa-github"></i>
+        Edit on GitHub
+    </a>
+                                                                                                                <a class="dropdown-item d-flex align-items-center gap-2" href="singlehtml/Index.html" target="_blank" rel="noopener">
+                                            <i class="fas fa-print"></i>
+                                            Full documentation (single file)
+                                        </a>
+                                                                                                </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -62,44 +121,27 @@
         <div class="page-main-inner">
             <div class="page-main-navigation">
                 <nav>
-                    <input class="toc-checkbox" id="toggleToc" type="checkbox">
 
-                    
-<div class="toc-header">
-    <div class="toc-title">
-        <a class="toc-title-project" href="#"></a>
-            </div>
-    <div class="toc-actions">
-        <label class="toc-toggle" for="toggleToc">
-            Menu
-        </label>
-    </div>
-</div>                    <div class="toc-collapse">
-                                                <div aria-label="main navigation" class="toc" role="navigation">
-                                <div aria-label="Main navigation" class="main_menu" role="navigation">
-        
-    <ul class="menu-level-1">
-    <li class="">
+                    <div id="toc-collapse">
+                                                <div aria-label="main navigation" class="toc"
+                             role="navigation">
+                                <all-documentations-menu-mobile
+        data-override-url="_resources/js/menu-proxy.php"></all-documentations-menu-mobile>
+    <div aria-label="Main navigation" class="main_menu" role="navigation">
+                <p class="caption">Container with collapsible columns</p>
+            <ul class="menu-level-1" role="menubar">
+    <li class="" role="menuitem">
     <a href="Installation/Index.html">
         Installation
-    </a></li>    </ul>
-    <ul class="menu-level-1">
-    <li class="">
+    </a></li>    <li class="" role="menuitem">
+    <a href="Example/Index.html">
+        Example
+    </a></li>    </ul>    <ul class="menu-level-1" role="menubar">
+    <li class="" role="menuitem">
     <a href="Sitemap.html">
         Sitemap
     </a></li>    </ul>
     </div>
-    <div aria-label="Meta navigation" class="main_menu  d-block d-lg-none" role="navigation">
-    <hr/>
-    <p class="caption">Contributors Corner</p>
-    <ul class="menu-level-1">            <li><a href="_sources/Index.rst.txt" rel="nofollow noopener" target="_blank">
-                    View source of current document
-            </a></li>
-                    <li><a href="https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/WritingDocsOfficial/GithubMethod.html" rel="nofollow noopener" target="_blank">
-                    How to edit
-            </a></li>
-        </ul>
-</div>
                         </div>
                     </div>
                 </nav>
@@ -108,23 +150,26 @@
                 <div class="rst-content">                        <nav aria-label="breadcrumbs navigation" class="breadcrumb-bar" role="navigation">
         
 <ol class="breadcrumb">
-                <li aria-current="page"  class="breadcrumb-item  active">ew_collapsible_container: Container with collapsible columns</li>
+                <li aria-current="page"  class="breadcrumb-item  active">Container with collapsible columns</li>
         </ol>
-        <div class="breadcrumb-additions">    <a class="btn btn-sm btn-light" href="_sources/Index.rst.txt" rel="nofollow noopener" target="_blank">
-        <span class="btn-icon"><span class="fas fa-code"></span></span>
-        <span class="btn-text">View source</span>
-    </a>
-        <a class="btn btn-sm btn-light" href="https://docs.typo3.org/m/typo3/docs-how-to-document/main/en-us/WritingDocsOfficial/GithubMethod.html" id="btnHowToEdit" rel="nofollow noopener" target="_blank">
-        <span class="btn-icon"><span class="fas fa-info-circle"></span></span>
-        <span class="btn-text">How to edit</span>
-    </a>
-    </div>    </nav>
+        <div class="breadcrumb-additions">                <a class="btn btn-sm btn-light" href="https://github.com/evoweb/ew_collapsible_container/issues/new/choose?title=Problem+on+https%3A%2F%2Fgithub.com%2Fevoweb%2Few_collapsible_container%2FIndex.html" id="btnReportIssue" rel="nofollow noopener" target="_blank">
+                    <span class="btn-icon"><i class="fas fa-comment-dots"></i></span>
+                    <span class="btn-text">Give feedback</span>
+                </a>
+                            <a class="btn btn-sm btn-secondary" href="https://github.com/evoWeb/ew_collapsible_container/edit/develop/Documentation/Index.rst" id="btnEditOnGitHub" rel="nofollow noopener" target="_blank">
+                    <span class="btn-icon"><span class="fab fa-github"></span></span>
+                    <span class="btn-text">Edit on GitHub</span>
+                </a>
+            </div>
+    </nav>
                     
 <article class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
     <div itemprop="articleBody">
         <!-- content start -->
-                <section class="section" id="ew-collapsible-container-container-with-collapsible-columns">
-            <h1>ew_collapsible_container: Container with collapsible columns<a class="headerlink" href="#ew-collapsible-container-container-with-collapsible-columns" data-bs-toggle="modal" data-bs-target="#linkReferenceModal"  title="Reference this headline">¶</a></h1>
+                
+<section class="section" id="container-with-collapsible-columns" data-rst-anchor="start">
+            <a id="start"></a>
+            <h1>Container with collapsible columns<a class="headerlink" href="#container-with-collapsible-columns" data-bs-toggle="modal" data-bs-target="#linkReferenceModal"  title="Reference this headline">&nbsp;<i class="fa-solid fa-link"></i></a></h1>
             <dl class="field-list simple ">
             <dt class="field-odd">Extension key</dt>
 
@@ -142,25 +187,13 @@
 
         <dd class="field-odd">
             
+    <p>2.3.0</p>
         </dd>
             <dt class="field-odd">Language</dt>
 
         <dd class="field-odd">
             
     <p>en</p>
-        </dd>
-            <dt class="field-odd">Description</dt>
-
-        <dd class="field-odd">
-            
-    <p>Adds collapsibility to container columns and directly link
-into record form, if only one child type is allowed</p>
-        </dd>
-            <dt class="field-odd">Copyright</dt>
-
-        <dd class="field-odd">
-            
-    <p>2024-2024</p>
         </dd>
             <dt class="field-odd">Author</dt>
 
@@ -180,10 +213,20 @@ license.</p>
 
         <dd class="field-odd">
             
-    <p>Wed, 14 Aug 2024 18:58:41 +0000</p>
+    <p>Wed, 11 Mar 2026 11:43:53 +0000</p>
+        </dd>
+            <dt class="field-odd">Copyright</dt>
+
+        <dd class="field-odd">
+            
+    <p>2024-2024</p>
         </dd>
     </dl>
             <hr />
+            
+    <p>Adds collapsibility to container columns and directly link
+into record form, if only one child type is allowed</p>
+
             
     <p>The content of this document is related to TYPO3,
 a GNU/GPL CMS/Framework available from <a href="http://typo3.org">http://typo3.org</a></p>
@@ -199,6 +242,11 @@ a GNU/GPL CMS/Framework available from <a href="http://typo3.org">http://typo3.o
 
 
 </li>
+    <li class="toc-item">
+    <a href="Example/Index.html#example-1">Example</a>
+
+
+</li>
     </ul>
 </div>
             
@@ -211,7 +259,7 @@ a GNU/GPL CMS/Framework available from <a href="http://typo3.org">http://typo3.o
             <ul class="pagination justify-content-center"><li class="page-item">
                             <a class="page-link" href="Installation/Index.html"
                                title="Accesskey Alt(+Shift)+n">
-                                Next
+                                Next <i class="fa-solid fa-chevron-right"></i>
                             </a>
                         </li>
                     </ul>
@@ -222,7 +270,7 @@ a GNU/GPL CMS/Framework available from <a href="http://typo3.org">http://typo3.o
     </main>
 
     <div class="modal fade" id="linkReferenceModal" tabindex="-1" aria-labelledby="linkReferenceModalLabel"
-    aria-hidden="true" data-current-filename="Index">
+    aria-hidden="true" data-current-filename="Index" data-interlink-shortcode="evoweb/sf-books">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -232,26 +280,41 @@ a GNU/GPL CMS/Framework available from <a href="http://typo3.org">http://typo3.o
             <div class="modal-body">
                 <div class="alert alert-success d-none" id="permalink-alert-success" role="alert"></div>
                 <div class="mb-3">
-                    <label for="permalink-uri" class="col-form-label">Permalink</label>
+                    <div class="permalink-short-wrapper">
+                        <label for="permalink-short" class="col-form-label">Permalink (Shortlink)</label>
+                        <div class="input-group">
+                            <input class="form-control code" id="permalink-short" readonly>
+                            <button type="button" class="btn btn-outline-secondary copy-button" data-target="permalink-short"><i class="far fa-clone"></i></button>
+                        </div>
+                        <p><em>Copy and freely share the link</em></p>
+                    </div>
+                    <label for="permalink-uri" class="col-form-label">URL</label>
                     <div class="input-group">
                         <input class="form-control code" id="permalink-uri" readonly>
                         <button type="button" class="btn btn-outline-secondary copy-button" data-target="permalink-uri"><i class="far fa-clone"></i></button>
                     </div>
-                    <p>Copy and freely share the link</p>
                 </div>
                 <div class="mb-3">
-                    <div class="alert alert-warning alert-permalink-rst" role="alert">This link target has no permanent anchor assigned.The link below can be used, but is prone to change if the page gets moved.
+                    <div class="alert alert-warning alert-permalink-rst" role="alert">This link target has no permanent anchor assigned.                        You can make a <a href="https://github.com/evoWeb/ew_collapsible_container/edit/develop/Documentation/Index.rst">pull request on GitHub</a> to suggest an anchor.
+                        The link below can be used, but is prone to change if the page gets moved.
                     </div>
-                    <label for="permalink-rst" class="col-form-label">reStructuredText (reST):</label>
+                    <label for="permalink-rst" class="col-form-label">Link in reStructuredText (reST)</label>
                     <div class="input-group">
                         <textarea class="form-control code" id="permalink-rst" readonly></textarea>
                         <button type="button" class="btn btn-outline-secondary copy-button" data-target="permalink-rst"><i class="far fa-clone"></i></button>
                     </div>
-                    <p>Copy this link into your TYPO3 manual. </p>
+                    <p><em>Copy this link into your TYPO3 manual.</em></p>
                 </div>
                 <div class="mb-3">
-                    <label for="permalink-html" class="col-form-label">HTML:</label>
+                    <label for="permalink-md" class="col-form-label">Link in Markdown</label>
                     <div class="input-group">
+                        <textarea class="form-control code" id="permalink-md" readonly></textarea>
+                        <button type="button" class="btn btn-outline-secondary copy-button" data-target="permalink-md"><i class="far fa-clone"></i></button>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="permalink-html" class="col-form-label">Link in HTML</label>
+                                        <div class="input-group">
                         <textarea class="form-control code" id="permalink-html" readonly></textarea>
                         <button type="button" class="btn btn-outline-secondary copy-button" data-target="permalink-html"><i class="far fa-clone"></i></button>
                     </div>
@@ -289,10 +352,18 @@ a GNU/GPL CMS/Framework available from <a href="http://typo3.org">http://typo3.o
     <div class="frame frame-ruler-before frame-background-dark">
         <div class="frame-container">
             <div class="frame-inner">
-                                <div class="footer-additional">
-                    <p class="text-center">Last rendered: Aug 14, 2024 18:58</p>
+                <ul class="footer-simplemenu">
+                        <li><a href="https://github.com/evoweb/ew_collapsible_container" title="Home" rel="nofollow noopener"><span>Home</span></a></li>
+                                                <li><a href="ew-collapsible-container@evoweb.de" title="Contact" rel="nofollow noopener"><span>Contact</span></a></li>
+                                                <li><a href="https://github.com/evoweb/ew_collapsible_container/issues" rel="nofollow noopener" title="Issues"><span>Issues</span></a></li>
+                                                <li><a href="https://github.com/evoweb/ew_collapsible_container" rel="nofollow noopener" title="Repository"><span>Repository</span></a></li>
+                                            </ul>                <div class="footer-additional">
+                    <p class="text-center">Last rendered: Mar 11, 2026 11:43</p>
                 </div>
                 <div class="footer-meta">
+                                        <div class="footer-meta-copyright">
+                        &copy; since 2024 by evoWeb
+                    </div>
                     <ul class="footer-meta-navigation">
                         <li><a href="https://typo3.org/legal-notice" rel="nofollow" target="_blank" title="Legal Notice">Legal Notice</a></li>
                         <li><a href="https://typo3.org/privacy-policy" rel="nofollow" target="_blank" title="Privacy Policy">Privacy Policy</a></li>
